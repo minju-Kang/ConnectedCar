@@ -9,3 +9,8 @@ dj-database-url
 python-decouple
 gunicorn
 whitenoise
+opencv-python
+dlib
+tensorflow
+playsound
+bs4
