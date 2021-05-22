@@ -4,6 +4,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from django.shortcuts import render
+from app.models import UserSettings
 
 # Create your views here.
 from django.shortcuts import render, redirect
@@ -49,7 +50,12 @@ def register_user(request):
 
             msg     = 'User created - please <a href="/login">login</a>.'
             success = True
-            
+
+            # db
+            userSettings = UserSettings(name=username)
+            userSettings.save()
+            print('databse: insert username in UserSettings')
+
             #return redirect("/login/")
 
         else:
