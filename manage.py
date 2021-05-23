@@ -5,6 +5,8 @@ Copyright (c) 2019 - present AppSeed.us
 
 import os
 import sys
+from multiprocessing import Process
+from detectDrowsiness import cnn
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
@@ -20,3 +22,17 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    ''' multiprocessing (drowsy driver detection)
+    if sys.argv[1] == 'runserver':
+        p1 = Process(target=main)
+        p2 = Process(target=cnn)
+
+        p1.start()
+        p2.start()
+
+        p2.join()
+
+    else:
+        main()
+    '''
