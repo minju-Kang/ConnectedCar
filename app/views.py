@@ -11,8 +11,8 @@ from django import template
 from bs4 import BeautifulSoup
 from pprint import pprint
 import requests
-
-
+from app.models import UserSettings
+from app.forms import SettingForm
 
 
 @login_required(login_url="/login/")
@@ -93,6 +93,35 @@ def index(request):
 
     #html_template = loader.get_template( 'index.html' )
     #return HttpResponse(html_template.render(context, request))
+
+
+@login_required(login_url="/login/")
+def save(request):
+    if request.method == 'POST':
+        instance = get_object_or_404(UserSettings, name=request.user.username)
+        setting_form = SettingForm(request.POST)
+
+        if setting_form.is_valid():
+            if setting_form.cleaned_data['news'] == 'T':
+                instance.wNews = 1
+                request.session['news'] = 1
+            if setting_form.cleaned_data['stock'] == 'T':
+                instance.wStock = 1
+                request.session['stock'] = 1
+            if setting_form.cleaned_data['weather'] == 'T':
+                instance.wWeather = 1
+                request.session['weather'] = 1
+            if setting_form.cleaned_data['mail'] == 'T':
+                instance.wMail = 1
+                request.session['mail'] = 1
+            if setting_form.cleaned_data['calendar'] == 'T':
+                instance.wCalendar = 1
+                request.session['calendar'] = 1
+
+            instance.save()
+
+    return render(request, 'page-user.html')
+
 
 @login_required(login_url="/login/")
 def pages(request):

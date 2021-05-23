@@ -43,27 +43,32 @@
                   <label> Widget </label>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
-                        <input type="checkbox" name="news" value="yes">
+                        <input type="checkbox" name="newsCheck" id="newsCheck">
+                        <input type="hidden" name="news" id="news">
                         <label> News </label>
                     </div>
                     <div class="col-md-6 pr-md-1">
-                        <input type="checkbox" name="stock" value="yes">
+                        <input type="checkbox" name="stockCheck" id="stockCheck">
+                        <input type="hidden" name="stock" id="stock">
                         <label> Stock </label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
-                        <input type="checkbox" name="weather" value="yes">
+                        <input type="checkbox" name="weatherCheck" id="weatherCheck">
+                        <input type="hidden" name="weather" id="weather">
                         <label> Weather </label>
                     </div>
                     <div class="col-md-6 pr-md-1">
-                        <input type="checkbox" name="mail" value="yes">
+                        <input type="checkbox" name="mailCheck" id="mailCheck">
+                        <input type="hidden" name="mail" id="mail">
                         <label> Mail </label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
-                        <input type="checkbox" name="calender" value="yes">
+                        <input type="checkbox" name="calendarCheck" id="calendarCheck">
+                            <input type="hidden" name="calendar" id="calendar">
                         <label> Calender </label>
                     </div>
                   </div>
@@ -125,7 +130,7 @@
         </form>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-fill btn-primary">Save</button>
+        <button type="submit" id="save_btn" class="btn btn-fill btn-primary">Save</button>
       </div>
     </div>
   </div>
@@ -174,4 +179,22 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+<script type="text/javascript">
+    var save_btn = document.getElementById('save_btn');
+    save_btn.onclick = function() {
+        var list = ['news', 'stock', 'weather', 'mail', 'calendar'];
+
+        for(var i=0; i<list.length; i++) {
+            var widgetCheck = document.getElementById(list[i]+'Check');
+            var widget = document.getElementById(list[i]);
+
+            if(widgetCheck.checked == true) {
+                widget.value = 'T';
+            } else {
+                widget.value = 'F';
+            }
+        }
+    };
+</script>
+{% endblock javascripts %}

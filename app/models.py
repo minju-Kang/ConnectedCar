@@ -14,5 +14,4 @@ class UserSettings(models.Model):
     wStock = models.IntegerField(default=0)
     wWeather = models.IntegerField(default=0)
     wMail = models.IntegerField(default=0)
-    wCalander = models.IntegerField(default=0)
-    mail = models.CharField(max_length=50)
+    wCalendar = models.IntegerField(default=0)
