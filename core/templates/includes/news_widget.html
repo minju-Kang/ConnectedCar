@@ -1,0 +1,88 @@
+<!doctype html>
+<head>
+<meta charset="utf-8" />
+<title>http://www.blueb.co.kr</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<style>
+.newsli {
+    width: 400px; height: 30px; border-bottom: 1px dotted #DDD; padding: 5px; margin: 0px 5px; overflow:hidden;
+} 
+a {
+    color: white; overflow:hidden;
+}
+
+
+.ticker {
+	width: 500px;
+	height: 85px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-radius: 5px;
+}
+
+</style>
+
+</head>
+<body>
+<div class="col-lg-6 col-md-12">
+    <div class="card">
+        <div class = "card-header">
+            <h4 class="card-title"> NEWS </h4>
+        </div>
+
+        <div class = "card-body">
+            <ul id="ticker_02" class="ticker">
+                <li class = "newsli"><a href= {{newslinklist.0}}> {{newslist.0}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.1}}> {{newslist.1}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.2}}> {{newslist.2}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.3}}> {{newslist.3}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.4}}> {{newslist.4}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.5}}> {{newslist.5}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.6}}> {{newslist.6}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.7}}> {{newslist.7}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.8}}> {{newslist.8}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.9}}> {{newslist.9}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.10}}> {{newslist.10}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.11}}> {{newslist.11}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.12}}> {{newslist.12}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.13}}> {{newslist.13}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.14}}> {{newslist.14}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.15}}> {{newslist.15}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.16}}> {{newslist.16}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.17}}> {{newslist.17}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.18}}> {{newslist.18}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.19}}> {{newslist.19}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.20}}> {{newslist.20}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.21}}> {{newslist.21}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.22}}> {{newslist.22}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.23}}> {{newslist.23}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.24}}> {{newslist.24}} </a></li>
+                
+           
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+	
+	function tick2(){
+		$('#ticker_02 li:first').slideUp( function () { $(this).appendTo($('#ticker_02')).slideDown(); });
+	}
+	setInterval(function(){ tick2 () }, 1500);
+
+
+
+</script>
+
+</body>
+</html>

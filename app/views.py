@@ -48,6 +48,33 @@ def index(request):
     print('현재 초미세먼지: '+ultra_dust)
     print('현재 오존지수: '+ozone)
    # return render(request, 'includes/widget.html', {'address': address, 'currenttemp': currenttemp})
+
+
+    news_link = "https://www.yna.co.kr/theme/exclusive"
+    news_html = requests.get(news_link)
+
+
+    news_soup = BeautifulSoup(news_html.text, 'html.parser')
+
+    news_data1 = news_soup.find('ul', {'list'})
+    news1 = news_data1.find_all('a', {'class' : 'tit-wrap'})
+
+
+    newslist = []
+    for headline in news1:
+        newslist.append(headline.text.strip())
+        #print(headline.text.strip())    #얘를 한개씩 CONTEXTS 딕셔너리에 넣어햐 하나?
+
+ 
+
+    newslink = news_soup.find_all('a', {'tit-wrap'})
+    newslinklist = []
+
+    for a in newslink:
+        href = a.attrs['href']
+        newslinklist.append(href)
+
+
     context = {}
     context['segment'] = 'index'
     context = {
@@ -55,8 +82,11 @@ def index(request):
         'temp': currenttemp,
         'weather': weather,
         'dust': dust,
-        'ultra_dust': ultra_dust
+        'ultra_dust': ultra_dust,
+        'newslist': newslist,
+        'newslinklist': newslinklist
     }
+
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context,request))
    

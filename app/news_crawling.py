@@ -1,45 +1,32 @@
 
+from typing import Text
 from bs4 import BeautifulSoup
 from pprint import pprint
 from django.shortcuts import render
 import requests
 
 
-    #나중에 gps정보 받아와서 link 스트링에 지역명 추가하기
-link = "https://news.daum.net/"
-html = requests.get(link)
-
-    #pprint(html.text)
-
-#soup = BeautifulSoup(html.text, 'html.parser')
+news_link = "https://www.yna.co.kr/theme/exclusive"
+news_html = requests.get(news_link)
 
 
+news_soup = BeautifulSoup(news_html.text, 'html.parser')
+
+news_data1 = news_soup.find('ul', {'list'})
+news1 = news_data1.find_all('a', {'class' : 'tit-wrap'})
+
+linklist = news_soup.find_all('a', {'tit-wrap'})
+print(linklist)
+
+for a in linklist:
+    href = a.attrs['href']
+    print(href)
 
 
-#data1 = soup.find('div', {'hdline_article_tit'})
-#print(data1)
 
-    # address = data1.find('span', {'class':'btn_select'}).text
-    # print('현재 위치: '+address) 
+#print(news1)
 
-    # currenttemp = data1.find('span',{'class': 'todaytemp'}).text
-    # print('현재 온도: '+currenttemp+'℃')
+#for headline in news1:
+ #   print(headline.text.strip())    #얘를 한개씩 CONTEXTS 딕셔너리에 넣어햐 하나?
 
 
-    # data3 = soup.find('div', {'class': 'main_info'})
-    # weather = data3.find('p',{'class': 'cast_txt'}).text
-    # print('현재 날씨:' + weather)
-
-    # data2 = data1.findAll('dd')
-    # dust = data2[0].find('span', {'class':'num'}).text
-    # ultra_dust = data2[1].find('span', {'class':'num'}).text
-    # ozone = data2[2].find('span', {'class':'num'}).text
-
-    # print('현재 미세먼지: '+dust)
-    # print('현재 초미세먼지: '+ultra_dust)
-    # print('현재 오존지수: '+ozone)
-
-    # return render(weather, 'weather.py', {'address': address, 'currenttemp': currenttemp})
-
-    #printList = address + "\n" + currenttemp + "\n" + weather + "\n" + dust+"\n"+ultra_dust+"\n"+ozone 
-    #print(printList)
