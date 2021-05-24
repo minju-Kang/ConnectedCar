@@ -14,3 +14,4 @@ dlib
 tensorflow
 playsound
 bs4
+face_recognition
