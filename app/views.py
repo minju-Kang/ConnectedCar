@@ -9,6 +9,15 @@ from django.template import loader
 from django.http import HttpResponse
 from django import template
 
+
+@login_required(login_url="/login0/")
+def index(request):
+    context = {}
+    context['segment'] = 'index'
+
+    html_template = loader.get_template('index.html')
+    return HttpResponse(html_template.render(context, request))
+
 @login_required(login_url="/login/")
 def index(request):
     
