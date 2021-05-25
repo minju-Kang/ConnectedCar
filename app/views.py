@@ -15,7 +15,6 @@ from app.models import UserSettings
 from app.forms import SettingForm
 
 
-
 @login_required(login_url="/login0/")
 def index(request):
     context = {}

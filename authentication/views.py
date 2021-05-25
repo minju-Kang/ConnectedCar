@@ -17,6 +17,7 @@ import face_recognition
 import cv2
 import numpy as np
 import os
+from app.models import UserSettings
 
 
 def face_recog():
@@ -198,8 +199,10 @@ def register_user(request):
             raw_password = form.cleaned_data.get("password1")
 
             # db
-            userSettings = UserSettings(name=username)
-            userSettings.save()
+            #userSettings = UserSettings(name=username)
+            # userSettings.save()
+
+            userSettings = UserSettings.objects.create(name=username)
             print('databse: insert username in UserSettings')
 
             user = authenticate(username=username, password=raw_password)
@@ -208,6 +211,7 @@ def register_user(request):
             success = True
 
             #return redirect("/login/")
+
 
         else:
             msg = 'Form is not valid'
