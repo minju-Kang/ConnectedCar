@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from app.models import UserSettings
 from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
@@ -195,6 +196,12 @@ def register_user(request):
             username = form.cleaned_data.get("username")
             image_capture(username)
             raw_password = form.cleaned_data.get("password1")
+
+            # db
+            userSettings = UserSettings(name=username)
+            userSettings.save()
+            print('databse: insert username in UserSettings')
+
             user = authenticate(username=username, password=raw_password)
 
             msg     = 'User created - please <a href="/login">login</a>.'
