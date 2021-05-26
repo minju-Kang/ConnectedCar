@@ -70,7 +70,7 @@ def face_recog():
                 # 0.6 is typical best performance.
                 name = "Unknown"
                 #얼굴 인식할 경우 count 1증가
-                if min_value < 0.4:
+                if min_value < 0.34:
                     index = np.argmin(distances)
                     name = known_face_names[index]
                     count = count +1
