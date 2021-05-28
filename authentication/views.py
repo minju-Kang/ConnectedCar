@@ -18,6 +18,7 @@ import cv2
 import numpy as np
 import os
 from app.models import UserSettings
+from django.views.decorators.csrf import csrf_exempt
 
 
 def face_recog():
@@ -123,13 +124,11 @@ def face_recog():
     return 0
 
 def login_view(request):
-
-    #form = LoginForm(request.POST or None)
     msg = None
 
     if request.method == "POST":
 
-        #if form.is_valid():
+
         known_face_names = []
         dirname = 'knowns'
         files = os.listdir(dirname)
@@ -140,6 +139,11 @@ def login_view(request):
 
         username = face_recog()
 
+        if username == 0:
+            print("test")
+            return redirect('login2')
+
+
         if username in known_face_names:
             u = User.objects.get(username=username)
             if u is not None:
@@ -147,36 +151,47 @@ def login_view(request):
                 return redirect("/")
             else:
                 msg = 'Invalid credentials'
-        # else:
-        #     msg = 'Error validating the form'
 
     return render(request, "accounts/login.html", { "msg" : msg})
 
+@csrf_exempt
+def login_view2(request):
 
-    # if request.method == "POST":
-    #
-    #     if form.is_valid():
-    #         username = form.cleaned_data.get("username")
-    #         password = form.cleaned_data.get("password")
-    #         user = authenticate(username=username, password=password)
-    #         if user is not None:
-    #             login(request, user)
-    #             return redirect("/")
-    #         else:
-    #             msg = 'Invalid credentials'
-    #     else:
-    #         msg = 'Error validating the form'
-    #
-    #return render(request, "accounts/login.html", {"form": form, "msg" : msg})
+    form = LoginForm(request.POST or None)
+    msg = None
+
+    if request.method == "POST":
+
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("/")
+            else:
+                msg = 'Invalid credentials'
+        else:
+            msg = 'Error validating the form'
+
+    return render(request, "accounts/login2.html", {"form": form, "msg" : msg})
 
 
 def image_capture(username):
     camera = cv2.VideoCapture(0)
+    count = 0
     while True:
         ret, frame = camera.read()
-        cv2.imwrite('knowns/'+username+'.jpg', frame)
+        count = count +1
+        print(count)
+        str = "The picture is taken after 5 seconds. "
+        cv2.putText(frame, str, (30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0))
         cv2.imshow('Video', frame)
 
+        if count >= 200:
+            cv2.imwrite('knowns/'+username+'.jpg', frame)
+            cv2.imshow('Video', frame)
+            break
         # Hit 'q' on the keyboard to quit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
