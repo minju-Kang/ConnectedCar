@@ -7,62 +7,61 @@
 
 <style>
 .newsli {
-    width: 400px; height: 30px; border-bottom: 1px dotted #DDD; padding: 5px; margin: 0px 5px; overflow:hidden;
+    width: 600px; height: 40px; border-bottom: 1px dotted #DDD; padding: 5px; margin: 0px 5px; overflow:hidden;
 } 
-a {
-    color: white; overflow:hidden;
+.news_link {
+    color: white; overflow:hidden; font-size: 20px;
 }
 
 
 .ticker {
-	width: 500px;
-	height: 85px;
+	width: 730px;
+	height: 8em;
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	border-radius: 5px;
+	border-radius: 6px;
 }
 
 </style>
 
 </head>
 <body>
-<div class="col-lg-6 col-md-12">
+<div class="col-md-12">
     <div class="card">
         <div class = "card-header">
-            <h4 class="card-title"> NEWS </h4>
+            <h2 class="card-title" style = "display: inline;"> NEWS </h2>
+            <span style = "color:gray">연합뉴스에서 제공받은 뉴스입니다.</span>
         </div>
 
         <div class = "card-body">
             <ul id="ticker_02" class="ticker">
-                <li class = "newsli"><a href= {{newslinklist.0}}> {{newslist.0}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.1}}> {{newslist.1}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.2}}> {{newslist.2}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.3}}> {{newslist.3}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.4}}> {{newslist.4}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.5}}> {{newslist.5}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.6}}> {{newslist.6}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.7}}> {{newslist.7}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.8}}> {{newslist.8}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.9}}> {{newslist.9}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.10}}> {{newslist.10}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.11}}> {{newslist.11}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.12}}> {{newslist.12}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.13}}> {{newslist.13}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.14}}> {{newslist.14}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.15}}> {{newslist.15}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.16}}> {{newslist.16}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.17}}> {{newslist.17}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.18}}> {{newslist.18}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.19}}> {{newslist.19}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.20}}> {{newslist.20}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.21}}> {{newslist.21}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.22}}> {{newslist.22}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.23}}> {{newslist.23}} </a></li>
-                <li class = "newsli"><a href= {{newslinklist.24}}> {{newslist.24}} </a></li>
-                
-           
+                <li class = "newsli"><a href= {{newslinklist.0}} class= "news_link"> {{newslist.0}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.1}} class= "news_link"> {{newslist.1}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.2}} class= "news_link"> {{newslist.2}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.3}} class= "news_link"> {{newslist.3}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.4}} class= "news_link"> {{newslist.4}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.5}} class= "news_link"> {{newslist.5}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.6}} class= "news_link"> {{newslist.6}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.7}} class= "news_link"> {{newslist.7}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.8}} class= "news_link"> {{newslist.8}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.9}} class= "news_link"> {{newslist.9}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.10}} class= "news_link"> {{newslist.10}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.11}} class= "news_link"> {{newslist.11}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.12}} class= "news_link"> {{newslist.12}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.13}} class= "news_link"> {{newslist.13}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.14}} class= "news_link"> {{newslist.14}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.15}} class= "news_link"> {{newslist.15}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.16}} class= "news_link"> {{newslist.16}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.17}} class= "news_link"> {{newslist.17}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.18}} class= "news_link"> {{newslist.18}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.19}} class= "news_link"> {{newslist.19}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.20}} class= "news_link"> {{newslist.20}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.21}} class= "news_link"> {{newslist.21}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.22}} class= "news_link"> {{newslist.22}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.23}} class= "news_link"> {{newslist.23}} </a></li>
+                <li class = "newsli"><a href= {{newslinklist.24}} class= "news_link"> {{newslist.24}} </a></li>
 
             </ul>
 
@@ -78,7 +77,7 @@ a {
 	function tick2(){
 		$('#ticker_02 li:first').slideUp( function () { $(this).appendTo($('#ticker_02')).slideDown(); });
 	}
-	setInterval(function(){ tick2 () }, 1500);
+	setInterval(function(){ tick2 () }, 4000);
 
 
 

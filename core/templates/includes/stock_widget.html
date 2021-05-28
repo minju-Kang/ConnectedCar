@@ -1,21 +1,119 @@
 
-      <div class="col-lg-6 col-md-12">
-        <div class="card ">
-          <div class="card-header">
-            <h4 class="card-title"> 주식 </h4>
+      
+      <style>
+        .total {
+          width: 100%;
+          
+        }
+        .left {
+          float: left;
+          width: 50%;
+          box-sizing: border-box;
+        }
+        .right {
+       
+          float: right;
+          width: 50%;
+          box-sizing: border-box;
+        }
+     
+        .stock_name{
+          display: inline-block; 
+          width: 100%; 
+          text-align: center;
+          font-weight: bold; 
+          font-size: 20px;
+          color: white;
+        }
+        .stock_price{
+          display: inline-block; 
+          width: 100%; 
+          text-align: center;
+          font-size: 30px;
+          color: white;
+        }
+        .stock_table{
+          margin-left: auto; 
+          margin-right: auto;
+          color:white;
+          width: 60%;
+          font-size: 15px;
+          text-align: center;
+          border: 1px solid white;
+        }
+        
+      </style>
+
+      <div class="col-md-12">
+          <div class = "card-header">
+            <h2 class="card-title" style = "display: inline;"> STOCK </h2>
+            <span style = "color:gray">네이버 금융/증권에서 제공받은 정보입니다.</span>
           </div>
-          <div class="card-body">
-              <h5>코스피</h5>
-              <h6> {{ kospi.0 }} </h6>
-              <h6> {{ kospi.1 }} &nbsp;&nbsp;&nbsp; {{kospi.2}} </h6>
-              <img src = "{{kospi.3}}" alt = "코스피 그래프"/>
-              <h6>개인: {{kospi.4}} &nbsp;&nbsp;외국인: {{kospi.5}}&nbsp;&nbsp;기관:{{kospi.6}}</h6>
-            <br><br>
-              <h5>코스닥</h5>
-              <h6> {{ kosdaq.0 }} </h6>
-              <h6> {{ kosdaq.1 }} &nbsp;&nbsp;&nbsp; {{kosdaq.2}} </h6>
-              <img src = "{{kosdaq.3}}" alt = "코스닥 그래프"/>
-              <h6>개인: {{kosdaq.4}} &nbsp;&nbsp;외국인: {{kosdaq.5}}&nbsp;&nbsp;기관:{{kosdaq.6}}</h6>
+          <div class = "card-body"></div>
+            <div>
+              <div style="text-align: center; color:white; font-weight: bold; font-size: 1.5em">인기 검색 종목</div>
+              <table class = "stock_table" border="0">
+                <th style="text-decoration: underline; width: 40%">종목명</th>
+                <th style="text-decoration: underline; width: 30%">현재가</th>
+                <th style="text-decoration: underline; width: 30%">전일비</th>
+                <tr class="line">
+                  <td>{{lanking.0.0}}</td>
+                  <td>{{lanking.1.0}}</td>
+                  <td> <img src = "{{lanking.3.0}}" alt = "전일비상승하락" style="width: 15px; height: 15px;"/> {{lanking.2.0}}</td>
+                 
+                </tr>
+                <tr class="line">
+                  <td>{{lanking.0.1}}</td>
+                  <td>{{lanking.1.1}}</td>
+                  <td><img src = "{{lanking.3.1}}" alt = "전일비상승하락" style="width: 15px; height: 15px;"/>{{lanking.2.1}}</td>
+                 
+                </tr>
+                <tr class="line">
+                  <td>{{lanking.0.2}}</td>
+                  <td>{{lanking.1.2}}</td>
+                  <td><img src = "{{lanking.3.2}}" alt = "전일비상승하락" style="width: 15px; height: 15px;"/>{{lanking.2.2}}</td>
+              
+               </tr>
+               <tr class="line">
+                <td>{{lanking.0.3}}</td>
+                <td>{{lanking.1.3}}</td>
+                <td><img src = "{{lanking.3.3}}" alt = "전일비상승하락" style="width: 15px; height: 15px;"/>{{lanking.2.3}}</td>
+          
+               </tr>
+               <tr class="line">
+                <td>{{lanking.0.4}}</td>
+                <td>{{lanking.1.4}}</td>
+                <td><img src = "{{lanking.3.4}}" alt = "전일비상승하락" style="width: 15px; height: 15px;"/>{{lanking.2.4}}</td>
+               
+               </tr>
+              </table>
+            </div>
+           <br><br>
+            <div class = "total">
+              <div class = "left">
+                <div class = "stock_name">코스피</div>
+                <div class = "stock_price"> {{ kospi.0 }} </div>
+                <h4 style = "text-align: center;"> <img src = "{{kospi.7}}" alt = "코스피상승하락" style="width: 15px; height: 15px;"/>{{ kospi.1 }} &nbsp;&nbsp;&nbsp; {{kospi.2}} </h4>
+                <h5 style = "text-align: center;">개인: {{kospi.4}} &nbsp;&nbsp;외국인: {{kospi.5}}&nbsp;&nbsp;기관:{{kospi.6}}</h5>
+
+                <img style = "display: block; margin: 0px auto;"  src = "{{kospi.3}}" alt = "코스피 그래프"/>
+              </div>
+              <div class = "right">
+                <div class = "stock_name">코스닥</div>
+                <div class = "stock_price"> {{ kosdaq.0 }} </div>
+                  
+                <h4 style = "text-align: center;"> <img src = "{{kosdaq.7}}" alt = "코스닥상승하락" style="width: 15px; height: 15px;"/> {{ kosdaq.1 }} &nbsp;&nbsp;&nbsp; {{kosdaq.2}} </h4>
+                <h5 style = "text-align: center;">개인: {{kosdaq.4}} &nbsp;&nbsp;외국인: {{kosdaq.5}}&nbsp;&nbsp;기관:{{kosdaq.6}}</h5>
+
+                <img style = "display: block; margin: 0px auto;" src = "{{kosdaq.3}}" alt = "코스닥 그래프"/>
+
+              </div>
+               
+            </div>
           </div>
-        </div>
+         
+         
+          
       </div>
+      
+

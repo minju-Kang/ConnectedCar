@@ -1,19 +1,45 @@
-
-      <div class="col-lg-6 col-md-12">
+<style>
+  .container {
+    position: relative;
+    width: 400px;
+  }
+  .box {
+    position: relative;
+    width: 400px;
+    color: #fff
+  }
+</style>
+      <div class="col-md-12">
         <div class="card ">
           <div class="card-header">
-            <h4 class="card-title"> Weather </h4>
+            <h2 class="card-title"> Weather </h2>
+            <h4 style= "text-align: right;">{{ address }}</h4>
           </div>
           <div class="card-body">
-
+            <div class = "container">
+              <div class = "box">
+                <span><img src = "{{img_src}}" alt = "날씨 이미지" style = "width: 130px; height: 130px; float:left;"/> </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <h1 style = "display: inline; font-size:100px;">{{ temp }}</h1>
+                <span style = "font-size: 40px;">°C</span>
+                <h4> {{ weather_state }} </h4>
+              </div>
+            </div>
             
-              <h6> {{ address }} </h6>
-              <h6> 현재 온도: {{ temp }} </h6>
-              <h6> {{ weather }} </h6>
-              <h6> 미세먼지 농도: {{ dust }} </h6>
-              <h6> 초미세먼지 농도: {{ ultra_dust }} </h6>
+            <span style="display:table; margin-left:auto; margin-right:auto;">
+             
+                <h4 style = "display: inline;"> 미세먼지:  {{ dust }}   </h4>  
+                <span><img src = "{{dust_src}}" alt = "미세먼지 이미지" style = "width: 20px; height: 20px;"/></span> 
+                <h4 style = "display: inline;"> &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; 초미세먼지:  {{ ultra_dust }}  </h4>
+                <span><img src = "{{ultra_dust_src}}" alt = "초미세먼지 이미지" style = "width: 20px; height: 20px;"/></span>
+           
+            
+            </span>
+             
+             
 
           </div>
         </div>
       </div>
+
 

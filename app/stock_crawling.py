@@ -26,6 +26,13 @@ def stock():
 
     kospi_gap_price = gap_stock1.find('span', {'gap_price'}).text #가격변동
     kospi_gap_rate = stock1.find('span', {'gap_rate'}).text #퍼센티지 변동 및 상승하락 여부
+    kospi_shape = kospi_gap_rate[0]
+    kospi_shape_imgsrc = ""
+    if kospi_shape == '+':
+        kospi_shape_imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Armed_forces_red_triangle.svg/1200px-Armed_forces_red_triangle.svg.png"
+    else:
+        kospi_shape_imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Blue_triangle.svg/1152px-Blue_triangle.svg.png"    
+
     imgsrc = stock1.find_all('img', {'_img_chart'}) #그래프이미지소스
     for img in imgsrc:
         kospi_imgsrc = img.attrs['src']
@@ -56,6 +63,13 @@ def stock():
 
     kosdaq_gap_price = gap_stock2.find('span', {'gap_price'}).text #가격변동
     kosdaq_gap_rate = stock2.find('span', {'gap_rate'}).text #퍼센티지 변동 및 상승하락 여부
+    kosdaq_shape = kosdaq_gap_rate[0]
+    kosdaq_shape_imgsrc = ""
+    if kosdaq_shape == '+':
+        kosdaq_shape_imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Armed_forces_red_triangle.svg/1200px-Armed_forces_red_triangle.svg.png"
+    else:
+        kosdaq_shape_imgsrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Blue_triangle.svg/1152px-Blue_triangle.svg.png" 
+
     imgsrc = stock2.find_all('img', {'_img_chart'}) #그래프이미지소스
     for img in imgsrc:
         kosdaq_imgsrc = img.attrs['src']
@@ -81,7 +95,7 @@ def stock():
     kospi_data.append(kospi_trend_pe)
     kospi_data.append(kospi_trend_fo)
     kospi_data.append(kospi_trend_co)
-
+    kospi_data.append(kospi_shape_imgsrc)
 
     kosdaq_data = [] #코스닥 데이터
     kosdaq_data.append(kosdaq_price)
@@ -91,6 +105,7 @@ def stock():
     kosdaq_data.append(kosdaq_trend_pe)
     kosdaq_data.append(kosdaq_trend_fo)
     kosdaq_data.append(kosdaq_trend_co)
+    kosdaq_data.append(kosdaq_shape_imgsrc)
 
     #인기 검색 종목
     stock_link = "https://finance.naver.com/"
@@ -109,22 +124,90 @@ def stock():
     #lanking_data = stock_soup.find('div', {'ct_box trend_box _home_trend_wrapper'})
     lanking_data = stock_soup.find('div', {'class':'aside_area aside_popular'})
     lanking_data1 = lanking_data.find('table', {'class':'tbl_home'})
-    lanking_data2 = lanking_data1.find_all('tr', {'class': 'up'})
     lanking_data_price = [] #랭킹 가격
-    for data in lanking_data2:
-        lanking_data_price.append(data.find('td').text)
+    lanking_data2 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(1) > td:nth-child(2)").text
+    lanking_data_price.append(lanking_data2)
+    lanking_data2 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(2) > td:nth-child(2)").text
+    lanking_data_price.append(lanking_data2)
+    lanking_data2 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(3) > td:nth-child(2)").text
+    lanking_data_price.append(lanking_data2)
+    lanking_data2 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(4) > td:nth-child(2)").text
+    lanking_data_price.append(lanking_data2)
+    lanking_data2 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(5) > td:nth-child(2)").text
+    lanking_data_price.append(lanking_data2)
+    #container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(1) > td:nth-child(2)
+    
+    
 
+    stock_soup = BeautifulSoup(stock_html.text, 'html.parser')
+    lanking_data_gap = []#랭킹갭
+    lanking_data3 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(1) > td:nth-child(3) > span").text
+    lanking_data_gap.append(lanking_data3)
+    lanking_data3 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(2) > td:nth-child(3) > span").text
+    lanking_data_gap.append(lanking_data3)
+    lanking_data3 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(3) > td:nth-child(3) > span").text
+    lanking_data_gap.append(lanking_data3)
+    lanking_data3 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(4) > td:nth-child(3) > span").text
+    lanking_data_gap.append(lanking_data3)
+    lanking_data3 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(5) > td:nth-child(3) > span").text
+    lanking_data_gap.append(lanking_data3)
 
-    lanking_data_gap = [] #랭킹 갭
-    for data in lanking_data2:
-        temp = data.find('span').text
-        lanking_data_gap.append(temp[1:len(temp)])
+   # lanking_data_gap_rate 
+    lanking_shape_src = []
+    stock_link = "https://finance.naver.com/main/main.nhn"
+    stock_html = requests.get(stock_link, headers=headers)
+    stock_soup = BeautifulSoup(stock_html.text, 'html.parser')
+    
+    here_up = "https://ssl.pstatic.net/imgstock/images/images4/ico_up.gif"
+    here_down = "https://ssl.pstatic.net/imgstock/images/images4/ico_down.gif"
 
+    up_link = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Armed_forces_red_triangle.svg/1200px-Armed_forces_red_triangle.svg.png"
+    down_link = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Blue_triangle.svg/1152px-Blue_triangle.svg.png"
+    #tag = soup.select('img')[0]['btn-title']
+    lanking_data4 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(1) > td:nth-child(3)")
+    lanking_data5 = lanking_data4.find("img")['src']
+    if lanking_data5 == here_up:
+        lanking_shape_src.append(up_link)
+    else:
+        lanking_shape_src.append(down_link)
+
+    lanking_data4 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(2) > td:nth-child(3)")
+    lanking_data5 = lanking_data4.find("img")['src']
+    if lanking_data5 == here_up:
+        lanking_shape_src.append(up_link)
+    else:
+        lanking_shape_src.append(down_link)
+
+    lanking_data4 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(3) > td:nth-child(3)")
+    lanking_data5 = lanking_data4.find("img")['src']
+    if lanking_data5 == here_up:
+        lanking_shape_src.append(up_link)
+    else:
+        lanking_shape_src.append(down_link)
+
+    lanking_data4 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(4) > td:nth-child(3)")
+    lanking_data5 = lanking_data4.find("img")['src']
+    if lanking_data5 == here_up:
+        lanking_shape_src.append(up_link)
+    else:
+        lanking_shape_src.append(down_link)
+
+    lanking_data4 = stock_soup.select_one("#container > div.aside > div.group_aside > div.aside_area.aside_popular > table > tbody > tr:nth-child(5) > td:nth-child(3)")
+    lanking_data5 = lanking_data4.find("img")['src']
+    if lanking_data5 == here_up:
+        lanking_shape_src.append(up_link)
+    else:
+        lanking_shape_src.append(down_link)
+ 
+   # for data in lanking_data2:
+   #     temp = data.find('span').text
+   #     lanking_data_gap.append(temp[1:len(temp)])
+    print(lanking_shape_src)
     stock_lanking = []
     stock_lanking.append(lanking_data_text)
     stock_lanking.append(lanking_data_price)
     stock_lanking.append(lanking_data_gap)
-
+    stock_lanking.append(lanking_shape_src)
     stock_total = {
         'kospi': kospi_data, #배열
         'kosdaq': kosdaq_data, #배열
