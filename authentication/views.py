@@ -6,10 +6,9 @@ Copyright (c) 2019 - present AppSeed.us
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from app.models import UserSettings
 from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
@@ -144,7 +143,16 @@ def login_view(request):
             u = User.objects.get(username=username)
             if u is not None:
                 login(request, u)
-                return redirect("/")
+
+                # session
+                instance = get_object_or_404(UserSettings, name=request.user.username)
+                request.session["news"] = instance.wNews
+                request.session["stock"] = instance.wStock
+                request.session["weather"] = instance.wWeather
+                request.session["mail"] = instance.wMail
+                request.session["calendar"] = instance.wCalendar
+
+                return render(request, "index.html")
             else:
                 msg = 'Invalid credentials'
         # else:

@@ -197,5 +197,32 @@
             }
         }
     };
+
+    window.onload = function() {
+        if({{ news }} == 1) {
+            var newsCheck = document.getElementById('newsCheck');
+            newsCheck.checked = true;
+        }
+
+        if({{ stock }} == 1) {
+            var newsCheck = document.getElementById('stockCheck');
+            newsCheck.checked = true;
+        }
+
+        if({{ weather }} == 1) {
+            var newsCheck = document.getElementById('weatherCheck');
+            newsCheck.checked = true;
+        }
+
+        if({{ mail }} == 1) {
+            var newsCheck = document.getElementById('mailCheck');
+            newsCheck.checked = true;
+        }
+
+        if({{ calendar }} == 1) {
+            var newsCheck = document.getElementById('calendarCheck');
+            newsCheck.checked = true;
+        }
+    };
 </script>
 {% endblock javascripts %}
