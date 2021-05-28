@@ -7,21 +7,21 @@
 
 <style>
 .newsli {
-    width: 400px; height: 30px; border-bottom: 1px dotted #DDD; padding: 5px; margin: 0px 5px; overflow:hidden;
+    width: 1000px; height: 40px; border-bottom: 1px dotted #DDD; padding: 5px; margin: 0px 5px; overflow:hidden;
 } 
 a {
-    color: white; overflow:hidden;
+    color: white; overflow:hidden; font-size: 23px;
 }
 
 
 .ticker {
-	width: 500px;
-	height: 85px;
+	width: 730px;
+	height: 170px;
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	border-radius: 5px;
+	border-radius: 6px;
 }
 
 </style>
@@ -31,7 +31,7 @@ a {
 <div class="col-lg-6 col-md-12">
     <div class="card">
         <div class = "card-header">
-            <h4 class="card-title"> NEWS </h4>
+            <h2 class="card-title"> NEWS </h2>
         </div>
 
         <div class = "card-body">
@@ -78,7 +78,7 @@ a {
 	function tick2(){
 		$('#ticker_02 li:first').slideUp( function () { $(this).appendTo($('#ticker_02')).slideDown(); });
 	}
-	setInterval(function(){ tick2 () }, 1500);
+	setInterval(function(){ tick2 () }, 4000);
 
 
 

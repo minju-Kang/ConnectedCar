@@ -94,7 +94,7 @@ def weather():
     context_new = {
         'address' : address,
         'temp': currenttemp,
-        'weather': weather,
+        'weather_state': weather,
         'dust': dust_state,
         'ultra_dust': ultra_dust_state,
         'img_src' : img_src,
