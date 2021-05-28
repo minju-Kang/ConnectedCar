@@ -229,6 +229,7 @@
       <!-- <div class="col-lg-6 col-md-12"> -->
 
     </div>
+    <!--
     <div class="row">
       <div class="col-lg-4">
         <div class="card card-chart">
@@ -423,18 +424,16 @@
           </div>
         </div>
       </div>
-
     </div>
-    <div class = "weather">
-      
+    -->
+
+    <div class = "weather"  style="{% if weather == 0 %} display:none {% endif %}">
       {% include 'includes/weather_widget.html' %}
     </div>
-    <div class = "news">
-  
+    <div class = "news" style="{% if news == 0 %} display:none {% endif %}">
       {% include 'includes/news_widget.html' %}
     </div>
-    <div class = "stock">
-  
+    <div class = "stock" style="{% if stock == 0 %} display:none {% endif %}">
       {% include 'includes/stock_widget.html' %}
     </div>
 
@@ -447,7 +446,6 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
-
     });
   </script>
 

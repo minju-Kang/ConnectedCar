@@ -156,7 +156,7 @@ def login_view(request):
                 request.session["mail"] = instance.wMail
                 request.session["calendar"] = instance.wCalendar
 
-                return render(request, "index.html")
+                return redirect("/")
             else:
                 msg = 'Invalid credentials'
 

@@ -29,13 +29,15 @@ def index(request):
     context.update(weather_crawling.weather())
     context.update(news_crawling.news())
     context.update(stock_crawling.stock())
-
+    context.update(request.session.__dict__['_session_cache'])
     context['segment'] = 'index'
-    html_template = loader.get_template( 'index.html' )
-    return HttpResponse(html_template.render(context,request))
-   
+    print(context)
 
-    #html_template = loader.get_template( 'index.html' )
+    #return render(request, "index.html", context, )
+    html_template = loader.get_template('index.html')
+    return HttpResponse(html_template.render(context,request))
+
+    #
     #return HttpResponse(html_template.render(context, request))
 
 
