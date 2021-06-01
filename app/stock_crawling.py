@@ -81,7 +81,7 @@ def stock():
 
     kosdaq_trend = stock2.find('li',{'stock_up'})
     kosdaq_trend_fo = kosdaq_trend.find('span', {'data'}).text #외인
-    kosdaq_trend = (stock2.find_all('li',{'stock_up'}))[1].text
+    kosdaq_trend = (stock2.find_all('li',{'stock_dn'}))[1].text
 
     kosdaq_trend_co = kosdaq_trend[3:len(kosdaq_trend)] #기관
     
@@ -202,7 +202,7 @@ def stock():
    # for data in lanking_data2:
    #     temp = data.find('span').text
    #     lanking_data_gap.append(temp[1:len(temp)])
-    print(lanking_shape_src)
+    #print(lanking_shape_src)
     stock_lanking = []
     stock_lanking.append(lanking_data_text)
     stock_lanking.append(lanking_data_price)
