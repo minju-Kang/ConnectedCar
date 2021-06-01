@@ -226,7 +226,8 @@ def register_user(request):
             # userSettings.save()
 
             userSettings = UserSettings.objects.create(name=username)
-            print('databse: insert username in UserSettings')
+            userSettings.wNews = 1
+            userSettings.save()
 
             user = authenticate(username=username, password=raw_password)
 

@@ -45,6 +45,9 @@ def save(request):
     if request.method == 'POST':
         instance = get_object_or_404(UserSettings, name=request.user.username)
         setting_form = SettingForm(request.POST)
+        print(request.POST)
+        if request.POST.get("google") != None:
+            print("google")
 
         if setting_form.is_valid():
             if setting_form.cleaned_data['news'] == 'T':
