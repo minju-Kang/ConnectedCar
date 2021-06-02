@@ -33,10 +33,10 @@ def index(request):
     if request.method == 'POST':
         # sign in with google button
         if request.POST.get("gmail_signin"):
-            context.update(gmailFirstSignin())
+            context.update(gmailFirstSignin(request.user.username))
 
     elif request.session['mail'] == 1:
-        context.update(gmailUnread())
+        context.update(gmailUnread(request.user.username))
 
     context.update(request.session.__dict__['_session_cache'])
     context['segment'] = 'index'

@@ -5,38 +5,35 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
-def gmailFirstSignin():
+def gmailFirstSignin(name):
     SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
     flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
     creds = flow.run_local_server(port=8080)
 
-    with open('token.json', 'w') as token:
+    with open('gmail_tokens/'+name+'_token.json', 'w') as token:
         token.write(creds.to_json())
 
     return get_mails(creds)
 
 
-def gmailUnread():
+def gmailUnread(name):
     SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
     creds = None
 
-    if os.path.exists('token.json'):
+    if os.path.exists('gmail_tokens/'+name+'_token.json'):
         # while signed in
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-        print("token")
+        creds = Credentials.from_authorized_user_file('gmail_tokens/'+name+'_token.json', SCOPES)
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             # when access token expired
-            print("refresh")
             creds.refresh(Request())
         else:
             # first sign in
-            print('first')
             context = {'first_signin' : 1}
             return context
 
-        with open('token.json', 'w') as token:
+        with open('gmail_tokens/'+name+'_token.json', 'w') as token:
             token.write(creds.to_json())
 
     return get_mails(creds)
