@@ -215,4 +215,3 @@ def stock():
     }
 
     return stock_total
-        
