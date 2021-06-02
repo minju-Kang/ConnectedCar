@@ -24,12 +24,15 @@ def gmailUnread():
     if os.path.exists('token.json'):
         # while signed in
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+        print("token")
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             # when access token expired
+            print("refresh")
             creds.refresh(Request())
         else:
             # first sign in
+            print('first')
             context = {'first_signin' : 1}
             return context
 

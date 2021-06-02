@@ -20,7 +20,7 @@ sys.path.append('\app')
 from . import weather_crawling
 from . import news_crawling
 from . import stock_crawling
-from . import gmail_unread
+from .gmail_unread import gmailFirstSignin, gmailUnread
 
 
 @login_required(login_url="/login/")
@@ -29,21 +29,20 @@ def index(request):
     context.update(weather_crawling.weather())
     context.update(news_crawling.news())
     # context.update(stock_crawling.stock())
+
     if request.method == 'POST':
-        if request.POST.get("gmail_signin") != None:
-            context.update(gmail_unread.gmailFirstSignin())
-    else:
-        if request.session['mail'] == 1:
-            context.update(gmail_unread.gmailUnread())
+        # sign in with google button
+        if request.POST.get("gmail_signin"):
+            context.update(gmailFirstSignin())
+
+    elif request.session['mail'] == 1:
+        context.update(gmailUnread())
+
     context.update(request.session.__dict__['_session_cache'])
     context['segment'] = 'index'
 
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context,request))
-   
-
-    #html_template = loader.get_template( 'index.html' )
-    #return HttpResponse(html_template.render(context, request))
 
 
 @login_required(login_url="/login/")
