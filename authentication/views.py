@@ -176,6 +176,15 @@ def login_view2(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+
+                # session
+                instance = get_object_or_404(UserSettings, name=request.user.username)
+                request.session["news"] = instance.wNews
+                request.session["stock"] = instance.wStock
+                request.session["weather"] = instance.wWeather
+                request.session["mail"] = instance.wMail
+                request.session["calendar"] = instance.wCalendar
+                
                 return redirect("/")
             else:
                 msg = 'Invalid credentials'

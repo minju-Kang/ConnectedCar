@@ -16,16 +16,18 @@
                 {% csrf_token %} 
 
                 <div class="card-header">
-                  <h5 class="title" style = "font-size: 4vw;text-align: center;">Login</h5>
+                  <h5 class="title" style = "font-size: 3.5vw;text-align: center;">Login</h5>
 
                   <h6 class="card-category">
                       {% if msg %}
                         <span class="text-danger">{{ msg | safe }}</span>
                       {% else %}
-                        <div class="add_credential" style = "font-size: 1vw;text-align: center;">Add Your Credential</div>
+                        <img src = "https://image.flaticon.com/icons/png/128/847/847969.png" alt = "로그인" style="display: block; margin: 0px auto; width: 100px;"/>   
+                        <div class="add_credential" style = "font-size: 1vw;text-align: center; "><br>Add Your Credential</div>
                       {% endif %}  
                   </h6>
                 </div>
+                
 
                 <div class="card-body">
                 
@@ -53,8 +55,8 @@
                 </div>
                 <div class="card-footer" style="text-align: center;">
                   <button type="submit" name="login" class="btn btn-fill btn-primary" style="margin: auto;width: 30%;height: 4vw; font-size: 1vw">Face Recognition Login</button>
-                  &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-                  Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a>
+                  <br><br>
+                  <span style="font-size: 1.3vw;">Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a></span>
                 </div>
 
               </form>
