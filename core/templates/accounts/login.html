@@ -8,7 +8,7 @@
 {% block content %}
 
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="card">
 
               <form role="form" method="post" action="">
@@ -16,19 +16,19 @@
                 {% csrf_token %} 
 
                 <div class="card-header">
-                  <h5 class="title">Login</h5>
+                  <h5 class="title" style = "font-size: 4vw;text-align: center;">Login</h5>
 
                   <h6 class="card-category">
                       {% if msg %}
                         <span class="text-danger">{{ msg | safe }}</span>
                       {% else %}
-                        Add your credentials
+                        <div class="add_credential" style = "font-size: 1vw;text-align: center;">Add Your Credential</div>
                       {% endif %}  
                   </h6>
                 </div>
 
                 <div class="card-body">
-                    <p>Face Recognition Login</p>
+                
 <!--                    <div class="row">-->
 
 <!--                      <div class="col-md-3 px-md-1">-->
@@ -51,10 +51,10 @@
 <!--                    </div>-->
                     
                 </div>
-                <div class="card-footer">
-                  <button type="submit" name="login" class="btn btn-fill btn-primary">Login</button>
-                  &nbsp; &nbsp;
-                  Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a>
+                <div class="card-footer" style="text-align: center;">
+                  <button type="submit" name="login" class="btn btn-fill btn-primary" style="margin: auto;width: 30%;height: 4vw; font-size: 1vw">Face Recognition Login</button>
+                  &nbsp;&nbsp;&nbsp;
+                  <a href="{% url 'register' %}" class="text-primary"><button class="btn btn-fill btn-primary" style="margin: auto;width: 30%;height: 4vw; font-size: 1vw">Create Credential</button></a>
                 </div>
 
               </form>
@@ -62,6 +62,8 @@
             </div>
           </div>
       </div>
+
+      
 
 
 {% endblock content %}

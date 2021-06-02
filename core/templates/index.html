@@ -3,49 +3,64 @@
 {% block title %} Dashboard {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+<style>
+
+  
+body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
+
+
+</style>
+{% endblock stylesheets %}
+
 
 {% block content %}
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">{{ request.user.username }}'s car</h5>
-            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-primary"></i>Porsche Taycan</h3>
-          </div>
-          <div class="card-body" style="text-align: center;">
-            <h1 class="card-title" style="display: inline;">P&nbsp;&nbsp;</h1>
-            <h1 class="card-title" style="color: grey; display: inline;">R&nbsp;&nbsp;D&nbsp;&nbsp;N&nbsp;&nbsp;M</h1>
-          </div>
-          <div class="card-body" style="text-align: center;">
-            <img src="/static/assets/img/car_up.png" style="max-height: 710px;" alt="my car">
-          </div>
-        </div>
-      </div>
 
-      <div class="col-lg-8">
-        <div class="card card-chart" style="{% if weather == 0 %} display:none {% endif %}">
-          <div class = "weather">
+
+    <div class="row-new" id = "no_scroll">
+        <div class="col-lg-4-new">
+          <div class="card card-chart">
+            <div class="card-header">
+              <h5 class="card-category">sumin1234's car</h5>
+              <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-primary"></i>Porsche Taycan</h3>
+            </div>
+            <div class="card-body" style="text-align: center;">
+              <h1 class="card-title" style="display: inline;">P&nbsp;&nbsp;</h1>
+              <h1 class="card-title" style="color: grey; display: inline;">R&nbsp;&nbsp;D&nbsp;&nbsp;N&nbsp;&nbsp;M</h1>
+            </div>
+            <div class="card-body" style="text-align: center;">
+              <img src="/static/assets/img/car_up.png" style="max-height: 400px;" alt="my car">
+            </div>
+          </div>
+        </div>
+  
+   
+        <div class="col-lg-8-new" id = "yes_scroll">
+          <div class="card card-chart">
+            <div class = "weather"  style="{% if weather == 0 %} display:none {% endif %}">
               {% include 'includes/weather_widget.html' %}
+            </div>
           </div>
-        </div>
-        <div class="card card-chart" style="{% if news == 0 %} display:none {% endif %}">
-          <div class = "news">
+          <div class="card card-chart">
+            <div class = "news" style="{% if news == 0 %} display:none {% endif %}">
               {% include 'includes/news_widget.html' %}
+            </div>
           </div>
-        </div>
-        <div class="card card-chart" style="{% if mail == 0 %} display:none {% endif %}">
-          <div class="mail">
-              {% include 'includes/gmail_widget.html' %}
-          </div>
-        </div>
-        <div class="card card-chart"  style="{% if stock == 0 %} display:none {% endif %}">
-          <div class = "stock">
+          <div class="card card-chart">
+            <div class = "stock" style="{% if stock == 0 %} display:none {% endif %}">
               {% include 'includes/stock_widget.html' %}
+            </div>
           </div>
+          
         </div>
-      </div>
+        
+      
+      
+        
     </div>
+      <!-- <div class="col-lg-6 col-md-12"> -->
+  
+
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
@@ -57,6 +72,15 @@
       demo.initDashboardPageCharts();
 
     });
+    function hidden()
+    {document.body.style.overflow='hidden';}
+
+
+    $(yes_scroll).off('scroll touchmove mousewheel');
+
+    
+
+
   </script>
 
 {% endblock javascripts %}

@@ -637,8 +637,14 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
-
 .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-new {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -692,6 +698,7 @@ pre code {
 .col-md-6,
 .col-md-7,
 .col-md-8,
+.col-md-8-new,
 .col-md-9,
 .col-md-10,
 .col-md-11,
@@ -702,10 +709,12 @@ pre code {
 .col-lg-2,
 .col-lg-3,
 .col-lg-4,
+.col-lg-4-new,
 .col-lg-5,
 .col-lg-6,
 .col-lg-7,
 .col-lg-8,
+.col-lg-8-new,
 .col-lg-9,
 .col-lg-10,
 .col-lg-11,
@@ -1142,6 +1151,13 @@ pre code {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
+  .col-md-8-new {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    overflow:hidden;
+  
+  }
+
 
   .col-md-9 {
     flex: 0 0 75%;
@@ -1305,6 +1321,14 @@ pre code {
     max-width: 33.333333%;
   }
 
+  .col-lg-4-new {
+
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    
+    
+  }
+
   .col-lg-5 {
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
@@ -1324,6 +1348,17 @@ pre code {
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
+
+  .col-lg-8-new {
+ 
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    height: 630px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+  }
+
 
   .col-lg-9 {
     flex: 0 0 75%;
