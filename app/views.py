@@ -20,7 +20,7 @@ sys.path.append('\app')
 from . import weather_crawling
 from . import news_crawling
 from . import stock_crawling
-
+from . import gmail_unread
 
 
 @login_required(login_url="/login/")
@@ -28,7 +28,13 @@ def index(request):
     context = {}
     context.update(weather_crawling.weather())
     context.update(news_crawling.news())
-    context.update(stock_crawling.stock())
+    # context.update(stock_crawling.stock())
+    if request.method == 'POST':
+        if request.POST.get("gmail_signin") != None:
+            context.update(gmail_unread.gmailFirstSignin())
+    else:
+        if request.session['mail'] == 1:
+            context.update(gmail_unread.gmailUnread())
     context.update(request.session.__dict__['_session_cache'])
     context['segment'] = 'index'
 
@@ -45,9 +51,6 @@ def save(request):
     if request.method == 'POST':
         instance = get_object_or_404(UserSettings, name=request.user.username)
         setting_form = SettingForm(request.POST)
-        print(request.POST)
-        if request.POST.get("google") != None:
-            print("google")
 
         if setting_form.is_valid():
             if setting_form.cleaned_data['news'] == 'T':

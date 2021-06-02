@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="google-signin-client_id" content="789985821020-7adk61b8g27ncctdfkhfnumnno94fmbb.apps.googleusercontent.com">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <style>
+        .mailli {
+            width: 600px;
+            height: 40px;
+            border-bottom: 1px dotted #DDD;
+            padding: 5px;
+            margin: 0px 5px;
+            overflow: hidden;
+        }
+
+        .ticker {
+            width: 730px;
+            height: 8em;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-md-12">
+    <div class="card">
+        <div class = "card-header">
+            <h2 class="card-title" style = "display: inline;"> Gmail </h2>
+            <span style = "color:gray">읽지 않은 메시지를 최대 10건 보여줍니다.</span>
+        </div>
+        <div class = "card-body">
+            {% if first_signin == 1 %}
+            <form method="post">
+            {% csrf_token %}
+                <div style="text-align: center;">
+                    <button type="submit" name="gmail_signin" value="T" style="padding:0; border:none; background:none;">
+                        <img src="../../static/assets/img/google_signinbtn.png" width="200">
+                    </button>
+                </div>
+            </form>
+            {% else %}
+            <ul id="ticker_03" class="ticker">
+                <li class = "mailli">{{ From.0 }} : {{ Subject.0 }}</li>
+                <li class = "mailli">{{ From.1 }} : {{ Subject.1 }}</li>
+                <li class = "mailli">{{ From.2 }} : {{ Subject.2 }}</li>
+                <li class = "mailli">{{ From.3 }} : {{ Subject.3 }}</li>
+                <li class = "mailli">{{ From.4 }} : {{ Subject.4 }}</li>
+                <li class = "mailli">{{ From.5 }} : {{ Subject.5 }}</li>
+                <li class = "mailli">{{ From.6 }} : {{ Subject.6 }}</li>
+                <li class = "mailli">{{ From.7 }} : {{ Subject.7 }}</li>
+                <li class = "mailli">{{ From.8 }} : {{ Subject.8 }}</li>
+                <li class = "mailli">{{ From.9 }} : {{ Subject.9 }}</li>
+            </ul>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function tick3(){
+		$('#ticker_03 li:first').slideUp( function () { $(this).appendTo($('#ticker_03')).slideDown(); });
+	}
+	setInterval(function(){ tick3 () }, 4000);
+</script>
+
+</body>
+</html>
+
