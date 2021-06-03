@@ -1,3 +1,4 @@
+
 type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 demo = {
@@ -517,9 +518,10 @@ demo = {
   },
 
   initGoogleMaps: function() {
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    var myLatlng = new google.maps.LatLng(35.888450, 128.611576);
+    // var myLatlng = {lat: 35.888450, lng: 128.611576};
     var mapOptions = {
-      zoom: 13,
+      zoom: 30,
       center: myLatlng,
       scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
       styles: [{
@@ -715,7 +717,7 @@ demo = {
 
     var marker = new google.maps.Marker({
       position: myLatlng,
-      title: "Hello World!"
+      map: map,
     });
 
     // To add the marker to the map, call setMap();
