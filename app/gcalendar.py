@@ -40,7 +40,7 @@ def showgcalendar(name):
             creds.refresh(Request())
         else:
             # first sign in
-            context = {'first_signin': 1}
+            context = {'gcalendar_first_signin': 1}
             return context
 
         with open('gcalendar_tokens/' + name + '_token.json', 'w') as token:
