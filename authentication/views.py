@@ -207,6 +207,7 @@ def image_capture(username):
 
         if count >= 200:
             cv2.imwrite('knowns/'+username+'.jpg', frame)
+            cv2.imwrite('core/static/knowns/' + username + '.jpg', frame)
             cv2.imshow('Video', frame)
             break
         # Hit 'q' on the keyboard to quit!
