@@ -96,6 +96,7 @@ def get_calendar(creds):
         print(summary)
 
     context= {
+        'first-signin': 0,
         'gsummary': gsummary,
         'gaddress': gaddress,
         'gstart': gstart,
