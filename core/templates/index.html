@@ -125,8 +125,8 @@ body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 
     <div class="row">
     </div>
-    <div class="row"  >
-      <div class="col-lg-4">
+    <div class="row">
+      <div class="col-lg-4" >
         <div class="card card-chart">
           <div class="card-header">
             <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-primary"></i>Porsche Taycan</h3>
@@ -137,7 +137,7 @@ body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
             <p style="display: inline; font-size: 30px; ">Km/h</p>
           </div>
           <div class="card-body" style="text-align: center; margin-top: -10px;"> 
-            <img src="/static/assets/img/car_up.png" style="max-height: 600px; z-index: 2;" alt="my car">
+            <img src="/static/assets/img/car_up.png" style="max-height: 400px; z-index: 2;" alt="my car">
             <button class="openbtn" type="button" style="position: absolute; top: 34%; left: 50%; z-index: 3;"> OPEN </button>
             <button class="openbtn" type="button" style="position: absolute; top: 84%; left: 50%; z-index: 3;"> OPEN </button>
             <button id="cbtn1" class="circlebtn" type="button" style="position: absolute; top: 58%; left: 13%; z-index: 3;" onclick="toggleImg1()"><img id="cbtnpic1" src="/static/assets/img/steering.png"></button>
@@ -153,6 +153,7 @@ body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
           </div>
         </div>
       </div>
+
         <div class="col-lg-8-new" id = "yes_scroll">
           <div class="card card-chart" style="{% if weather == 0 %} display:none {% endif %}">
             <div class = "weather">
