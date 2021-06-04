@@ -189,11 +189,17 @@ body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
               {% include 'includes/gmail_widget.html' %}
             </div>
           </div>
+          <div class="card card-chart" style="{% if calendar == 0 %} display:none {% endif %}">
+            <div class = "calendar">
+              {% include 'includes/calendar_widget.html' %}
+            </div>
+          </div>
           <div class="card card-chart" style="{% if stock == 0 %} display:none {% endif %}">
             <div class = "stock">
               {% include 'includes/stock_widget.html' %}
             </div>
           </div>
+
         </div>
     </div>
 

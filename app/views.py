@@ -21,22 +21,26 @@ from . import weather_crawling
 from . import news_crawling
 from . import stock_crawling
 from .gmail_unread import gmailFirstSignin, gmailUnread
-
+from . import gcalendar
 
 @login_required(login_url="/login/")
 def index(request):
     context = {}
     context.update(weather_crawling.weather())
     context.update(news_crawling.news())
-    # context.update(stock_crawling.stock())
+    context.update(stock_crawling.stock())
 
     if request.method == 'POST':
         # sign in with google button
         if request.POST.get("gmail_signin"):
             context.update(gmailFirstSignin(request.user.username))
+        if request.POST.get("gcalendar_signin"):
+            context.update(gcalendar.gcalendarFirstSignin(request.user.username))
 
     elif request.session['mail'] == 1:
         context.update(gmailUnread(request.user.username))
+    elif request.session['calendar'] == 1:
+        context.update(gcalendar.showgcalendar(request.user.username))
 
     context.update(request.session.__dict__['_session_cache'])
     context['segment'] = 'index'

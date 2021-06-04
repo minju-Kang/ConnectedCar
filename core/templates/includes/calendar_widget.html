@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" name="google-signin-client_id" content="789985821020-7adk61b8g27ncctdfkhfnumnno94fmbb.apps.googleusercontent.com">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <style>
+        .mailli {
+            width: 600px;
+            height: 40px;
+            border-bottom: 1px dotted #DDD;
+            padding: 5px;
+            margin: 0px 5px;
+            overflow: hidden;
+        }
+
+        .ticker {
+            width: 730px;
+            height: 8em;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-md-12">
+    <div class="card">
+        <div class = "card-header">
+            <h2 class="card-title" style = "display: inline;"> Calendar </h2>
+            <span style = "color:gray">오늘의 일정을 알려드립니다.</span>
+        </div>
+        <div class = "card-body">
+            {% if gcalendar_first_signin == 1 %}
+            <form method="post">
+            {% csrf_token %}
+                <div style="text-align: center;">
+                    <button type="submit" name="gcalendar_signin" value="T" style="padding:0; border:none; background:none;">
+                        <img src="../../static/assets/img/google_signinbtn.png" width="200">
+                    </button>
+                </div>
+            </form>
+            {% else %}
+            <ul id="ticker_03" class="ticker">
+                오늘의 일정
+                {% for gsummary in gsummary  %}
+                <li >{{ gsummary }} </li>
+                {%  endfor %}
+            </ul>
+
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>
