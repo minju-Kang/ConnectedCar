@@ -21,9 +21,6 @@ def main():
     execute_from_command_line(sys.argv)
 
 if __name__ == '__main__':
-    main()
-
-    ''' multiprocessing (drowsy driver detection)
     if sys.argv[1] == 'runserver':
         p1 = Process(target=main)
         p2 = Process(target=cnn)
@@ -35,4 +32,3 @@ if __name__ == '__main__':
 
     else:
         main()
-    '''
