@@ -45,6 +45,7 @@ def get_mails(creds):
     # Call the Gmail API
     mfrom = []
     msub = []
+    msnip = []
 
     msglist = service.users().messages().list(userId='me', q='is:unread', maxResults=10).execute()
     messages = msglist.get('messages')
@@ -61,11 +62,13 @@ def get_mails(creds):
                     mfrom.append(value)
                 if name.lower() == "subject":
                     msub.append(value)
+        msnip.append(msg.get('snippet'))
 
     context = {
         'first-signin' : 0,
         'From': mfrom,
-        'Subject' : msub
+        'Subject' : msub,
+        'Snippet' : msnip
     }
 
     return context
