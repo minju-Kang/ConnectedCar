@@ -1,9 +1,112 @@
+<style>
+  .openbtn {
+	width:120px;
+	height: 40px;
+	color:#000;
+	background: #fff;
+	font-size: 16px;
+	border:none;
+	border-radius: 20px;
+	box-shadow: 0 7px 9px rgba(94, 94, 94, 0.3);
+	transition:0.3s;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+.circlebtn {
+  width:50px;
+	height: 50px;
+	color:#000;
+	background: #fff;
+	font-size: 16px;
+	border:none;
+	border-radius: 100px;
+	box-shadow: 0 7px 9px rgba(94, 94, 94, 0.3);
+	transition:0.3s;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+.openbtn.circlebtn:focus {
+	outline:0;
+  box-shadow: 0 7px 9px rgba(80, 17, 70, 0.3);
+}
+.openbtn:hover{
+  color:#fff;
+	background: rgba(48, 48, 48, 0.9);
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(31, 31, 31, 0.6);
+}
+/* .circlebtn:hover{
+  border: 2px solid rgba(48, 48, 48, 0.9);
+	cursor: pointer;
+	box-shadow: 0 0 10px #fff;
+} */
+
+</style>
+
+<script>
+  var stat1 = 1, stat2 = 1, stat3 = 1;
+
+  function toggleImg1() {
+    var btn = document.getElementById("cbtn1");
+    var img = document.getElementById("cbtnpic1");
+      if (status%2==1){ 
+        img.src = "/static/assets/img/steering.png";
+        btn.style.background = "#fff";
+        btn.style.boxShadow = "none";
+        }
+      else { 
+        img.src = "/static/assets/img/steering-w.png" 
+        btn.style.background = "rgba(48, 48, 48, 0.9)";
+        btn.style.boxShadow = "0 0 15px #fff";
+        }
+      status++;
+  }
+  function toggleImg2() {
+    var btn = document.getElementById("cbtn2");
+    var img = document.getElementById("cbtnpic2");
+    var lights = document.getElementById("light");
+      if (status%2==1){ 
+        img.src = "/static/assets/img/headlight.png"; 
+        lights.style.visibility = "hidden";
+        btn.style.background = "#fff";
+        btn.style.boxShadow = "none";
+        }
+      else { 
+        img.src = "/static/assets/img/headlight-w.png" 
+        lights.style.visibility = "visible";
+        btn.style.background = "rgba(48, 48, 48, 0.9)";
+        btn.style.boxShadow = "0 0 15px #fff";
+      }
+      status++;
+  }
+  function toggleImg3() {
+    var btn = document.getElementById("cbtn3");
+    var img = document.getElementById("cbtnpic3");
+      if (status%2==1){ 
+        img.src = "/static/assets/img/windshield.png"; 
+        btn.style.background = "#fff";
+        btn.style.boxShadow = "none";
+        }
+      else { 
+        img.src = "/static/assets/img/windshield-w.png"; 
+        btn.style.background = "rgba(48, 48, 48, 0.9)";
+        btn.style.boxShadow = "0 0 15px #fff";
+        }
+      status++;
+  }
+</script>
+
 {% extends "layouts/base.html" %}
 
 {% block title %} Dashboard {% endblock %} 
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
+
 <style>
 
   
@@ -14,11 +117,46 @@ body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 {% endblock stylesheets %}
 
 
+
+
 {% block content %}
+<div class="row-new" id = "no_scroll">
+  <div class="col-lg-4-new">
 
+    <div class="row">
+    </div>
+    <div class="row"  >
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category" style="font-size: 15px;">sumin1234's car</h5>
+            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-primary"></i>Porsche Taycan</h3>
+          </div>
+          
+          <div class="card-body" style="text-align: center; margin: -20px;" >
+            <p style="display:inline-block; font-size: 70px; color: #fff; text-shadow:0 2px 15px #fff;">67</p>
+            <p style="display: inline; font-size: 30px; ">Km/h</p>
+          </div>
+          <div class="card-body" style="text-align: center; margin-top: -10px;"> 
+            <img src="/static/assets/img/car_up.png" style="max-height: 600px; z-index: 2;" alt="my car">
+            <button class="openbtn" type="button" style="position: absolute; top: 34%; left: 50%; z-index: 3;"> OPEN </button>
+            <button class="openbtn" type="button" style="position: absolute; top: 84%; left: 50%; z-index: 3;"> OPEN </button>
+            <button id="cbtn1" class="circlebtn" type="button" style="position: absolute; top: 58%; left: 13%; z-index: 3;" onclick="toggleImg1()"><img id="cbtnpic1" src="/static/assets/img/steering.png"></button>
+            <button id="cbtn2" class="circlebtn" type="button" style="position: absolute; top: 58%; left: 87%; z-index: 3;" onclick="toggleImg2()"><img id="cbtnpic2" src="/static/assets/img/headlight.png"></button>
+            <button id="cbtn3" class="circlebtn" type="button" style="position: absolute; top: 44%; left: 50%; z-index: 3;" onclick="toggleImg3()"><img id="cbtnpic3" src="/static/assets/img/windshield.png"></button>
+            <img id = "light" src="/static/assets/img/headlight_effect.png" style="position: absolute; top: 10%; right: 5%; z-index: 1; visibility: hidden;">
+          </div>
+          <div class="card-body" style="text-align: center; margin-bottom: 15px;">
+            <h1 class="card-title" style="display: inline; color: grey;">P&nbsp;&nbsp;&nbsp;</h1>
+            <h1 class="card-title" style="color: grey; display: inline;">R&nbsp;&nbsp;&nbsp;</h1>
+            <h1 class="card-title" style="display: inline;">D&nbsp;&nbsp;&nbsp;</h1>
+            <h1 class="card-title" style="color: grey; display: inline;">N&nbsp;&nbsp;&nbsp;M</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="col-12">
 
-    <div class="row-new" id = "no_scroll">
-        <div class="col-lg-4-new">
           <div class="card card-chart">
             <div class="card-header">
               <h5 class="card-category">sumin1234's car</h5>
