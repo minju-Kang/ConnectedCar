@@ -241,7 +241,7 @@ def register_user(request):
 
             user = authenticate(username=username, password=raw_password)
 
-            msg     = '<span style = "font-size: 3vw; "> Go to  <a href="/login" style = "font-size: 5vw;"><b>Login Page</b></a>'
+            msg     = '<span style = "font-size: 1vw; "> Go to &nbsp; <a href="/login" style = "font-size: 2vw;"><b>Login Page</b></a>'
             success = True
 
             #return redirect("/login/")
