@@ -37,9 +37,9 @@ def index(request):
         if request.POST.get("gcalendar_signin"):
             context.update(gcalendar.gcalendarFirstSignin(request.user.username))
 
-    elif request.session['mail'] == 1:
+    if request.session['mail'] == 1:
         context.update(gmailUnread(request.user.username))
-    elif request.session['calendar'] == 1:
+    if request.session['calendar'] == 1:
         context.update(gcalendar.showgcalendar(request.user.username))
 
     context.update(request.session.__dict__['_session_cache'])

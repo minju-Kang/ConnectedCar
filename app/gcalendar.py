@@ -14,12 +14,12 @@ def gcalendarFirstSignin(name):
     # 사용 권한 지정
     # https://www.googleapis.com/auth/calendar	               캘린더 읽기/쓰기 권한
     # https://www.googleapis.com/auth/calendar.readonly	       캘린더 읽기 권한
-    SCOPES = ['https://www.googleapis.com/auth/calendar']
+    SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
     # 파일에 담긴 인증 정보로 구글 서버에 인증하기
     # 새 창이 열리면서 구글 로그인 및 정보 제공 동의 후 최종 인증이 완료됩니다.
     flow = InstalledAppFlow.from_client_secrets_file(creds_filename, SCOPES)
-    creds = flow.run_local_server(port=8080)
+    creds = flow.run_local_server(port=9000)
 
     with open('gcalendar_tokens/'+name+'_token.json', 'w') as token:
         token.write(creds.to_json())
@@ -96,7 +96,7 @@ def get_calendar(creds):
         print(summary)
 
     context= {
-        'first-signin': 0,
+        'gcalendar_first_signin': 0,
         'gsummary': gsummary,
         'gaddress': gaddress,
         'gstart': gstart,
