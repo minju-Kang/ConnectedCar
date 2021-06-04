@@ -22,7 +22,11 @@ def stock():
     stock1 = stock_data1.find('li', {'class' : '_kospi'})
     gap_stock1 = gap_stocK_data1.find('li', {'class' : '_kospi'})
 
-    kospi_price = stock1.find('span', {'stock_price stock_up'}).text   #가격 나옴
+    temp = stock1.find('span', {'stock_price stock_up'})
+    if temp is not None:
+        kospi_price = temp.text
+    else:
+        kospi_price = stock1.find('span', {'stock_price stock_dn'}).text
 
     kospi_gap_price = gap_stock1.find('span', {'gap_price'}).text #가격변동
     kospi_gap_rate = stock1.find('span', {'gap_rate'}).text #퍼센티지 변동 및 상승하락 여부
@@ -58,7 +62,11 @@ def stock():
     stock2 = stock_data2.find('li', {'class' : '_kosdaq'})
     gap_stock2 = gap_stocK_data2.find('li', {'class' : '_kosdaq'})
 
-    kosdaq_price = stock2.find('span', {'stock_price stock_up'}).text   #가격 나옴
+    temp = stock2.find('span', {'stock_price stock_dn'})
+    if temp is not None:
+        kosdaq_price = temp.text
+    else:
+        kosdaq_price = stock2.find('span', {'stock_price stock_dn'}).text
 
 
     kosdaq_gap_price = gap_stock2.find('span', {'gap_price'}).text #가격변동

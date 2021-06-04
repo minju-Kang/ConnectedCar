@@ -28,7 +28,7 @@ def index(request):
     context = {}
     context.update(weather_crawling.weather())
     context.update(news_crawling.news())
-    # context.update(stock_crawling.stock())
+    context.update(stock_crawling.stock())
 
     if request.method == 'POST':
         # sign in with google button

@@ -240,7 +240,7 @@ def register_user(request):
 
             user = authenticate(username=username, password=raw_password)
 
-            msg     = 'User created - please <a href="/login">login</a>.'
+            msg     = '<span style = "font-size: 3vw; "> Go to  <a href="/login" style = "font-size: 5vw;"><b>Login Page</b></a>'
             success = True
 
             #return redirect("/login/")
